@@ -9,6 +9,7 @@
   from = "/portfolio-item"
   to = "/portfolio-item.html"
   status = 200
+  query = { preserve = true }
 
 [[redirects]]
   from = "/*"
