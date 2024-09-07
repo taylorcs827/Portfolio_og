@@ -1,17 +1,4 @@
-[build]
-  publish = "dist"
-  command = "npm run build"
-
-[build.environment]
-  VITE_API_URL = "https://api.example.com"
-
-[[redirects]]
-  from = "/portfolio-item"
-  to = "/portfolio-item.html"
-  status = 200
-  query = { preserve = true }
-
 [[redirects]]
   from = "/*"
-  to = "/index.html!"
+  to = "/index.html"
   status = 200

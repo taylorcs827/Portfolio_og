@@ -59,3 +59,38 @@ if (window.location.pathname.includes('portfolio-item.html')) {
         console.error('Project not found!');
     }
 }
+function route() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+
+    if (window.location.pathname.includes('portfolio-item')) {
+        renderPortfolioItem(id);
+    } else {
+        renderHomePage(); // or other pages
+    }
+}
+
+function renderPortfolioItem(id) {
+    const project = projects[id]; // assuming you have a list of projects in your data.js
+    if (project) {
+        const detailsDiv = document.querySelector('.project-display-container');
+        detailsDiv.innerHTML = `
+            <section class="intro">
+                <h1 class="section__title section__title--intro">
+                    ${project.title} <strong>${project.subtitle}</strong>
+                </h1>
+                <p class="section__subtitle section__subtitle--intro">${project.descriptionIntro}</p>
+                <img src="${project.img}" alt="${project.title}" class="intro__img">
+            </section>
+            <div class="portfolio-item-individual">
+                <p>${project.descriptionDetails}</p>
+                <p><a href="${project.html}" target="_blank">View Project</a></p>
+            </div>
+        `;
+    } else {
+        console.error('Project not found!');
+    }
+}
+
+window.addEventListener('load', route);
+window.addEventListener('popstate', route); // to handle back/forward browser navigation
